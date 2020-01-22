@@ -24,7 +24,6 @@ public class ReservationDAO {
 		stmt.setInt(3, re.getTransportationId());
 		stmt.setInt(4, re.getAccommodationId());
 		stmt.executeUpdate();
-		System.out.println("am salvat cu succes");
 
 		DBHelper.closeConnection(con);
 
@@ -94,7 +93,7 @@ public class ReservationDAO {
 		PreparedStatement stmt = con.prepareStatement(deleteString);
 		stmt.setInt(1, destinationId);
 		stmt.executeUpdate();
-		System.out.println("am sters cu succes");
+
 
 		DBHelper.closeConnection(con);
 	}

@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -35,10 +36,13 @@
         <a class="nav-link" href="/Travel/transportations.htm">Transportations<span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <form:form action="${pageContext.request.contextPath}/destinationSearch.htm" commandName="destinationForm" 
+                 method="post" class="form-inline my-2 my-lg-0">
+
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="Search" name="searchQuery" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form:form>
   </div>
 </nav>
 <h2 class="text-center">All destinations</h2><br/><br/>

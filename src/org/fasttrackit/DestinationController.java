@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -88,5 +89,17 @@ public class DestinationController {
 		dedao.delete(Integer.parseInt(destinationId));
 		
 		return new ModelAndView("redirect:/destinations.htm");
+	}
+	
+	
+	@RequestMapping(value = "destinationSearch")
+	public ModelAndView searchDestinations(@RequestParam String searchQuery) throws SQLException {
+		
+		ModelMap model = new ModelMap();
+		DestinationDAO dedao = new DestinationDAO();
+		ArrayList<Destination> destinations = dedao.searchDestinations(searchQuery);
+		model.put("destinations", destinations);
+	
+		return new ModelAndView("travel/destinations", "model", model);
 	}
 }

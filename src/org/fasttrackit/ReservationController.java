@@ -48,7 +48,7 @@ public class ReservationController {
 			Destination destination = dedao.getDestinationById(Integer.toString(reservation.getDestinationId()));
 			Transportation transportation = trdao.getTransportationById(Integer.toString(reservation.getTransportationId()));
 			clientIdMap.put(Integer.valueOf(reservation.getId()), client.getFullName());
-			accommodationIdMap.put(Integer.valueOf(reservation.getId()), accommodation.getType());
+			accommodationIdMap.put(Integer.valueOf(reservation.getId()), accommodation.getName());
 			destinationIdMap.put(Integer.valueOf(reservation.getId()), destination.getAllDestination());
 			transportationIdMap.put(Integer.valueOf(reservation.getId()), transportation.getType());
 		}
@@ -80,7 +80,7 @@ public class ReservationController {
 		Transportation transportation = trdao.getTransportationById(Integer.toString(reservation.getTransportationId()));
 		
 		model.put("client", client.getFullName());
-		model.put("accommodation", accommodation.getType());
+		model.put("accommodation", accommodation.getName());
 		model.put("destination", destination.getAllDestination());
 		model.put("transportation", transportation.getType());
 		

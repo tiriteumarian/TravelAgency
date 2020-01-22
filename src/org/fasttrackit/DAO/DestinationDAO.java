@@ -49,6 +49,27 @@ public class DestinationDAO {
 		DBHelper.closeConnection(con);
 		return result;
 	}
+	
+	public ArrayList<Destination> searchDestinations(String query) throws SQLException {
+		Connection con = DBHelper.getConnection();
+		String selectString = "select * from destination where description like '%"+query+"%'";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(selectString);
+
+		ArrayList<Destination> result = new ArrayList<Destination>();
+		while (rs.next()) {
+			int id = rs.getInt("id");
+			String country = rs.getString("country");
+			String region = rs.getString("region");
+			String city = rs.getString("city");
+			String description = rs.getString("description");
+			String imagePath = rs.getString("image_Path");
+			Destination de = new Destination(id, country, region, city, description, imagePath);
+			result.add(de);
+		}
+		DBHelper.closeConnection(con);
+		return result;
+	}
 
 	public Destination getDestinationById(String destinationId) throws SQLException {
 		Connection con = DBHelper.getConnection();

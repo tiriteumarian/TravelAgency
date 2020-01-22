@@ -24,7 +24,7 @@ public class AccommodationController {
 		ArrayList<Accommodation> accommodations = acdao.getAccommodations();
 		System.out.println(accommodations.size());
 		model.put("accommodations", accommodations);
-
+		
 		return new ModelAndView("travel/accommodations", "model", model);
 	}
 
@@ -73,10 +73,7 @@ public class AccommodationController {
 	public ModelAndView accommodationEdit(@ModelAttribute("accommodationForm") Accommodation accommodation,
 			ModelMap model, BindingResult result) {
 		try {
-			System.out.println(accommodation);
-			System.out.println(accommodation.getId());
-			System.out.println(accommodation.getType());
-			System.out.println(accommodation.getDetails());
+		
 			AccommodationDAO acdao = new AccommodationDAO();
 			acdao.updateAccommodation(accommodation);
 		} catch (Exception ex) {

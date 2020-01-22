@@ -46,6 +46,25 @@ public class ClientDAO {
 		DBHelper.closeConnection(con);
 		return result;
 	}
+	public ArrayList<Client> searchClients(String query) throws SQLException {
+		Connection con = DBHelper.getConnection();
+		String selectString = "select * from client where first_name like '%"+query+"%' or last_name like '%"+query+"%'";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(selectString);
+
+	ArrayList<Client> result = new ArrayList<Client>();
+	while (rs.next()) {
+		int id = rs.getInt("id");
+		String firstName = rs.getString("first_name");
+		String lastName = rs.getString("last_name");
+		String phone = rs.getString("phone");
+		String email = rs.getString("email");
+		Client cl = new Client(id, firstName, lastName, phone, email);
+		result.add(cl);
+	}
+	DBHelper.closeConnection(con);
+	return result;
+}
 
 	public Client getClientById(String clientId) throws SQLException {
 		Connection con = DBHelper.getConnection();
@@ -91,4 +110,6 @@ public class ClientDAO {
 
 		DBHelper.closeConnection(con);
 	}
+
+
 }

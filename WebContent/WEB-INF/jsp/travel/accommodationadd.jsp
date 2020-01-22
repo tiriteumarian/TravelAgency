@@ -9,7 +9,7 @@
 <link href="<c:url value="/resources/styles/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/styles/style.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/javascript/bootstrap.min.js" />"></script>
-<title>Insert title here</title>
+<title>Travel Agency</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">

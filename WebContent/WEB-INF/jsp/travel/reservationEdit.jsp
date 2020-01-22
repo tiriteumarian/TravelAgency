@@ -78,7 +78,7 @@
 <td>Accommodation ID</td>
 <td>
 <form:select path="accommodationId" class="custom-select">
-    <form:options items="${model.accommodations}" itemValue="id" itemLabel="type"/>
+    <form:options items="${model.accommodations}" itemValue="id" itemLabel="name"/>
 </form:select>
 </td>
 </tr>
